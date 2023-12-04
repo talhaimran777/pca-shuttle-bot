@@ -1,20 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script type="text/javascript"
-    id="botcopy-embedder-d7lcfheammjct"
-    class="botcopy-embedder-d7lcfheammjct" 
-    data-botId="6542fd39890bf900084eace7"
->
-    var s = document.createElement('script'); 
-    s.type = 'text/javascript'; s.async = true; 
-    s.src = 'https://widget.botcopy.com/js/injection.js'; 
-    document.getElementById('botcopy-embedder-d7lcfheammjct').appendChild(s);
-</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dispute Chatbot</title>
+  </head>
+
+  <body>
+    <script
+      type="text/javascript"
+      id="botcopy-embedder-d7lcfheammjct"
+      class="botcopy-embedder-d7lcfheammjct"
+      data-botId="65536086d2658b000865afa4"
+    >
+      var s = document.createElement("script");
+      s.type = "text/javascript";
+      s.async = true;
+      s.src = "https://widget.botcopy.com/js/injection.js";
+      document.getElementById("botcopy-embedder-d7lcfheammjct").appendChild(s);
+    </script>
+
+    <script>
+      const receiveMessage = (event) => {
+        console.log("Event Recieved: ", event);
+
+        if (event.origin === "https://dashboard.taggrsolutions.com") {
+          Botcopy.sendCXEvent(event.data?.eventName);
+          Botcopy.closeWebview();
+        }
+      };
+
+      window.addEventListener("message", receiveMessage, false);
+    </script>
+  </body>
 </html>
